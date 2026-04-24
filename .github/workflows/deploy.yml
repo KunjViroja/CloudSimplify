@@ -3,21 +3,25 @@ name: CI Pipeline (Build & Push)
 on:
   push:
     branches:
-      - main   # change to 'master' if your branch is master
+      - main
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Login to Docker Hub
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
+      # 3. Build Docker Image
       - name: Build Docker Image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/cloudsimplify .
 
+      # 4. Push Docker Image
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/cloudsimplify
