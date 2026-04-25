@@ -66,5 +66,22 @@ export const servicesData = [
       "Global content delivery (use CloudFront)"
     ],
     example: "A bank keeps its database in a private subnet within a VPC so it cannot be accessed directly from the internet."
+  },
+  {
+    id: "cloudwatch",
+    name: "Amazon CloudWatch",
+    icon: "📈",
+    description: "A monitoring and observability service. It provides data and actionable insights to monitor applications, respond to system-wide performance changes, and optimize resource utilization.",
+    category: "Management",
+    useCases: [
+      "Monitoring EC2 server CPU usage",
+      "Setting alarms for billing thresholds",
+      "Collecting and tracking application logs"
+    ],
+    notUseCases: [
+      "Securing the network (use VPC/Security Groups)",
+      "Managing user identities (use IAM)"
+    ],
+    example: "A developer sets up a CloudWatch alarm to send an email when an EC2 instance's CPU utilization stays above 80% for more than 5 minutes."
   }
 ];
